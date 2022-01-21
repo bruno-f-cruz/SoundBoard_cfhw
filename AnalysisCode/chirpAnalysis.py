@@ -40,9 +40,11 @@ d = np.array(d.values)
 
 #%% Plot waveform
 fig = plt.figure()
-plt.plot(d)
+plt.plot(np.linspace(0,d.shape[0]/fs, num = d.shape[0]), d)
 plt.ylabel('Amplitude [V]')
 plt.xlabel('Time [sec]')
+plt.title('Measured Waveform')
+plt.xlim([0,1])
 plt.show()
 
 #%% plot spectrogram in raw and dB
@@ -55,6 +57,7 @@ plt.ylabel('Frequency [Hz]')
 plt.xlabel('Time [sec]')
 cb= plt.colorbar()
 cb.set_label('Magnitude [dB]')
+plt.title('Measured spectrogram [dB]')
 plt.xlim([0,1])
 plt.show()
 
@@ -68,8 +71,9 @@ plt.xlabel('Time [sec]')
 cb= plt.colorbar()
 cb.set_label('Magnitude [Raw]')
 plt.xlim([0,1])
-plt.plot([0,1],
-         [freqSweep[0], freqSweep[0]], c = 'r' )
+
+plt.title('Measured spectrogram')
+
 plt.show()
 
 
@@ -82,12 +86,12 @@ mySignal = generate_chirp(
                     write_file=False)
 #%% Plot waveform
 plt.figure()
-plt.plot(mySignal)
+plt.plot(np.linspace(0,mySignal.shape[0]/fs, num = mySignal.shape[0]),mySignal)
 plt.ylabel('Amplitude [V]')
 plt.xlabel('Time [sec]')
+plt.title('Theoretical waveform')
 plt.show()
 
-plt.show()
 #%% plot spectrogram in raw and dB
 
 f, t, Sxx = signal.spectrogram(mySignal, fs,
@@ -100,4 +104,7 @@ plt.xlabel('Time [sec]')
 cb= plt.colorbar()
 cb.set_label('Magnitude [dB]')
 plt.xlim([0,1])
+plt.title('Theoretical spectrogram [dB]')
+
 plt.show()
+

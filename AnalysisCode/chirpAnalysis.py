@@ -108,3 +108,7 @@ plt.title('Theoretical spectrogram [dB]')
 
 plt.show()
 
+#%%
+from scipy.io import wavfile
+samplerate, data = wavfile.read(r"C:\Users\Utilizador\Documents\repos\Soundboard\SoundBoard_cfhw\Data\SongBirdData\song_k19049_44586.23662704_1_25_6_34_22_01.wav")
+print(data.shape)
